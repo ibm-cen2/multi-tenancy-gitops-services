@@ -8,21 +8,22 @@ global:
   ## Set the value to True in order to accept the application license 
   ## B2BI @ https://ibm.biz/BdPzHS
   ## SFG  @ https://ibm.biz/BdPzHv
-  license: false
+  license: true
   # Specify the license edition as per license agreement. Valid value is prod or non-prod for Production and 
   # Non-production respectively. Remember that this parameter is crucial for IBM Licensing and Metering Service
   licenseType: "prod"
   image:
-    repository: "cp.icr.io/cp/ibm-b2bi/b2bi"
+  #B2bi 6.2 Image#23
+    repository: "image-registry.openshift-image-registry.svc:5000/b2bi-prod/b2bi"
   # Provide the tag value in double quotes
-    tag: "6.1.2.2"
+    tag: "June28"
   # If digest is specified, it takes precedence over tag
-    digest: sha256:4199ccb92349366fa5debbc7d4bccff9e56edaf0b22fa473e2040baedaa0acc8
+    digest: sha256:3e39915ea43e6cfed49325d6d979938859e942da7af699f088cc11bde88b3da5
     pullPolicy: IfNotPresent
     pullSecret: ""
   networkPolicies:
     ingress:
-      enabled: true
+      enabled: false
       customPolicies:
       #- name:
       #  fromSelectors:
@@ -45,7 +46,7 @@ global:
       #     endPort: 8450  
       
     egress:
-      enabled: true
+      enabled: false
       customPolicies:
       #- name:
       #  toSelectors:
@@ -81,7 +82,7 @@ serviceAccount:
   name: default
 
 resourcesInit:
-  enabled: false
+  enabled: true
   image:
     repository: "cp.icr.io/cp/ibm-b2bi"
     name: "b2bi-resources"
@@ -95,7 +96,7 @@ persistence:
   useDynamicProvisioning: false
 
 appResourcesPVC:
-  enabled: true
+  enabled: false
   storageClassName: ""
   selector:
     label: "intent"
@@ -154,11 +155,11 @@ dataSetup:
   enabled: true
   upgrade: false
   image:
-    repository: "cp.icr.io/cp/ibm-b2bi/b2bi-dbsetup"
+    repository: "image-registry.openshift-image-registry.svc:5000/b2bi-prod/b2bi-dbsetup"
     # Provide the tag value in double quotes
-    tag: "6.1.2.2"
+    tag: "june28"
      # If digest is specified, it takes precedence over tag
-    digest: sha256:ff279b7df12a22a1773753c8d03a1e32fb5ab8395b94c203dc3fa599e4184551
+    digest: sha256:140d89799208ec6bc1e0b5787d42b1524dc9933c83c67a54e2aeab9b18c289c9
     pullPolicy: IfNotPresent
     pullSecret: ""
 
@@ -194,7 +195,7 @@ integrations:
     isEnabled: false
     seasVersion: "1.0"
   itxIntegration:
-    enabled: false
+    enabled: true
     dataSetup:
       enabled: true
     image:
@@ -261,31 +262,31 @@ setupCfg:
   #upgrade: false
   basePort: 50000
   #License - specify values as true/false
-  licenseAcceptEnableSfg: false
+  licenseAcceptEnableSfg: true
   licenseAcceptEnableEbics: false
   licenseAcceptEnableFinancialServices: false
   licenseAcceptEnableFileOperation: false
 
   # Name of system passphrase secret if available
-  systemPassphraseSecret: 
+  systemPassphraseSecret: b2b-system-passphrase-secret
   #FIPS compliance mode. specify values as true/false 
   enableFipsMode: false
   # NIST 800-131a compliance mode. Please enter one of these values - strict/transition/"off"
   nistComplianceMode: "off"
 
   # Provide the DB attributes
-  dbVendor:
-  dbHost:
-  dbPort:
-  dbData:
-  dbDrivers:
+  dbVendor: db2
+  dbHost: 172.21.81.20
+  dbPort: 50000
+  dbData: B2BIDB
+  dbDrivers: db2jcc4.jar
   dbCreateSchema: true
   oracleUseServiceName: false
   # Values can be either true or false 
   usessl: false
   
   # Name of DB secret
-  dbSecret:
+  dbSecret: b2b-db-secret
   
   # Specify DB truststore file name including it's path relative to the mounted resources volume location, if applicable. Required when usessl is true.
   # When dbTruststoreSecret is mentioned, provide the name of the key holding the certificate data.
@@ -302,9 +303,9 @@ setupCfg:
   dbKeystoreSecret:
     
   #Provide the admin email address
-  adminEmailAddress:
+  adminEmailAddress: ibm@ibm.com
   # Provide the SMTP host details  
-  smtpHost:
+  smtpHost: us.ibm.com
 
   #Provide the termination grace period in seconds for containers. Only numeric value is accepted.
   terminationGracePeriod: 30
@@ -461,12 +462,12 @@ asi:
 
     # Supported values are "Cluster" & "Local". Default is "Cluster".
     externalTrafficPolicy: Cluster
-    ports: []
-      #- name: adapter-1
-      #  port: 30201
-      #  targetPort: 30201
-      #  nodePort: 30201
-      #  protocol: TCP
+    ports:
+      - name: adapter-1
+        port: 30201
+        targetPort: 30201
+        nodePort: 30201
+        protocol: TCP
     portRanges: []
       #- name: adapters
       #  portRange: 30301-30400
@@ -510,7 +511,7 @@ asi:
     
   ingress:
     internal:
-      host: ""
+      host: "asi-b2bi-prod.itzroks-664003h6xc-he1fme-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud"
       tls:
         enabled: true
         secretName: ""
@@ -520,7 +521,7 @@ asi:
       #    servicePort: "my-http"
       #    enableHttps: false
     external:
-      host: ""
+      host: "ext-asi.itzroks-664003h6xc-he1fme-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud"
       tls:
         enabled: true
         secretName: ""
@@ -750,12 +751,12 @@ ac:
 
     # Supported values are "Cluster" & "Local". Default is "Cluster".
     externalTrafficPolicy: Cluster
-    ports: []
-      #- name: adapter-1
-      #  port: 30401
-      #  targetPort: 30401
-      #  nodePort: 30401
-      #  protocol: TCP
+    ports:
+      - name: adapter-1
+        port: 30401
+        targetPort: 30401
+        nodePort: 30401
+        protocol: TCP
     portRanges: []
       #- name: adapters
       #  portRange: 30501-30600
@@ -785,7 +786,7 @@ ac:
       
   ingress:
     internal:
-      host: ""
+      host: "ac-b2bi-prod.itzroks-664003h6xc-he1fme-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud"
       tls:
         enabled: true
         secretName: ""
@@ -795,7 +796,7 @@ ac:
       #    servicePort: "my-http"
       #    enableHttps: false
     external:
-      host: ""
+      host: "ext-ac.itzroks-664003h6xc-he1fme-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud"
       tls:
         enabled: true
         secretName: ""
@@ -1031,7 +1032,7 @@ api:
 
   ingress:
     internal:
-      host: ""
+      host: "api-b2bi-prod.itzroks-664003h6xc-he1fme-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud"
       tls:
         enabled: true
         secretName: ""
@@ -1196,7 +1197,7 @@ test:
     pullPolicy: 'IfNotPresent'
 
 purge:
-  enabled: true
+  enabled: false
   image:
     repository: "cp.icr.io/cp/ibm-b2bi/b2bi-purge"
   # Provide the tag value in double quotes

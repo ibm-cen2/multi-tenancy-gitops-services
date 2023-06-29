@@ -23,7 +23,7 @@ global:
     pullSecret: ""
   networkPolicies:
     ingress:
-      enabled: false
+      enabled: true
       customPolicies:
       #- name:
       #  fromSelectors:
@@ -46,7 +46,7 @@ global:
       #     endPort: 8450  
       
     egress:
-      enabled: false
+      enabled: true
       customPolicies:
       #- name:
       #  toSelectors:
@@ -152,7 +152,7 @@ ingress:
   port:
 
 dataSetup:
-  enabled: true
+  enabled: false
   upgrade: false
   image:
     repository: "image-registry.openshift-image-registry.svc:5000/b2bi-prod/b2bi-dbsetup"
@@ -280,7 +280,7 @@ setupCfg:
   dbPort: 50000
   dbData: B2BIDB
   dbDrivers: db2jcc4.jar
-  dbCreateSchema: true
+  dbCreateSchema: false
   oracleUseServiceName: false
   # Values can be either true or false 
   usessl: false

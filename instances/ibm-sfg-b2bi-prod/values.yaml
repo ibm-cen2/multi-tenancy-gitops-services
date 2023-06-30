@@ -500,7 +500,7 @@ asi:
     failureThreshold: 5
        
   internalAccess:
-    enableHttps: false
+    enableHttps: true
     httpsPort:   
     tlsSecretName:  
       
@@ -781,7 +781,7 @@ ac:
       #- arg2
 
   internalAccess:
-    enableHttps: false
+    enableHttps: true
     tlsSecretName:
       
   ingress:
@@ -1022,7 +1022,7 @@ api:
       #- arg2
       
   internalAccess:
-    enableHttps: false
+    enableHttps: true
     tlsSecretName:
 
   externalAccess:

@@ -493,11 +493,11 @@ asi:
       #- arg1
       #- arg2
      
-  # startupProbe:
-  #   initialDelaySeconds: 120
-  #   timeoutSeconds: 30
-  #   periodSeconds: 60
-  #   failureThreshold: 3
+  startupProbe:
+    initialDelaySeconds: 120
+    timeoutSeconds: 300
+    periodSeconds: 600
+    failureThreshold: 5
        
   internalAccess:
     enableHttps: true

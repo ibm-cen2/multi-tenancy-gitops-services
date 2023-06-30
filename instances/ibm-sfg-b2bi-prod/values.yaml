@@ -495,8 +495,8 @@ asi:
      
   startupProbe:
     initialDelaySeconds: 120
-    timeoutSeconds: 300
-    periodSeconds: 600
+    timeoutSeconds: 600
+    periodSeconds: 900
     failureThreshold: 5
        
   internalAccess:
@@ -513,7 +513,7 @@ asi:
     internal:
       host: "asi-b2bi-prod.itzroks-664003h6xc-he1fme-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud"
       tls:
-        enabled: true
+        enabled: false
         secretName: ""
       extraPaths: []
       #  - routePrefix: "hello"
@@ -523,7 +523,7 @@ asi:
     external:
       host: "ext-asi.itzroks-664003h6xc-he1fme-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud"
       tls:
-        enabled: true
+        enabled: false
         secretName: ""
       extraPaths: []
       #  - routePrefix: "hello"
@@ -774,7 +774,7 @@ ac:
   readinessProbe:
     initialDelaySeconds: 60
     timeoutSeconds: 5
-    periodSeconds: 60
+    periodSeconds: 600
     command:
     arg: []
       #- arg1
@@ -788,7 +788,7 @@ ac:
     internal:
       host: "ac-b2bi-prod.itzroks-664003h6xc-he1fme-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud"
       tls:
-        enabled: true
+        enabled: false
         secretName: ""
       extraPaths: []
       #  - routePrefix: "hello"
@@ -798,7 +798,7 @@ ac:
     external:
       host: "ext-ac.itzroks-664003h6xc-he1fme-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud"
       tls:
-        enabled: true
+        enabled: false
         secretName: ""
       extraPaths: []
       #  - routePrefix: "hello"
@@ -1034,7 +1034,7 @@ api:
     internal:
       host: "api-b2bi-prod.itzroks-664003h6xc-he1fme-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud"
       tls:
-        enabled: true
+        enabled: false
         secretName: ""
 
   extraPVCs: []

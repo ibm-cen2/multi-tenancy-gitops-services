@@ -450,7 +450,8 @@ asi:
     annotations: {}  
   
   backendService:
-    type: LoadBalancer
+    #type: LoadBalancer
+    type: NodePort
     # Supported values are "ClientIP" & "None". Default is "None".
     sessionAffinity: None
     #override session affinity timeout configuration (applicable when sessionAffinity is configured other than "None")
@@ -467,6 +468,11 @@ asi:
         port: 30201
         targetPort: 30201
         nodePort: 30201
+        protocol: TCP
+      - name: adapter-lw
+        port: 10580
+        targetPort: 10580
+        nodePort: 10580
         protocol: TCP
     portRanges: []
       #- name: adapters

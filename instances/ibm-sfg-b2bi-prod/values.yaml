@@ -465,11 +465,6 @@ asi:
     externalTrafficPolicy: Cluster
     ports:
       - name: adapter-1
-        port: 30201
-        targetPort: 30201
-        nodePort: 30201
-        protocol: TCP
-      - name: adapter-lw
         port: 10580
         targetPort: 10580
         nodePort: 10580

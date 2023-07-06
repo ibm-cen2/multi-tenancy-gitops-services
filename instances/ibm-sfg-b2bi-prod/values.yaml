@@ -447,12 +447,12 @@ asi:
         nodePort: 30008
         protocol: TCP    
     extraPorts: 
-        name: lwfw
-        ports:
-        - containerPort: 10580
+      - name: lwfw
         targetPort: http
         nodePort: 10580
         protocol: TCP
+        ports:
+        - containerPort: 10580
     loadBalancerIP:  
     annotations: {}  
   

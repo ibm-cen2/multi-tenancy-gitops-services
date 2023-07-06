@@ -6,7 +6,7 @@ spec:
   ports:
     - name: lwfw-soap
       protocol: TCP
-      port: 10580
+      port: 5580
       targetPort: lwfw-soap
   selector:
     app.kubernetes.io/component: asi-server

@@ -447,7 +447,7 @@ asi:
         nodePort: 30008
         protocol: TCP    
     extraPorts: 
-      - name: lwfw
+        name: lwfw
         ports:
         - containerPort: 10580
         targetPort: http

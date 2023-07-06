@@ -36,6 +36,7 @@ A function to prepare host list based on access
 {{- $asiInternalPaths = append $asiInternalPaths (dict "routePrefix" "soap-new" "path" "/soap-new" "access" "internal") -}}
 {{- $asiInternalPaths = append $asiInternalPaths (dict "routePrefix" "soap-sync" "path" "/soap-sync" "access" "internal") -}}
 {{- $asiInternalPaths = append $asiInternalPaths (dict "routePrefix" "soap-sync-new" "path" "/soap-sync-new" "access" "internal") -}}
+{{- $asiInternalPaths = append $asiInternalPaths (dict "routePrefix" "portal_soap" "path" "/portal_soap" "access" "internal" "port" "lwtHttpAdapter") -}}
 
 {{- $apiInternalPaths := list -}}
 {{- $apiInternalPaths = append $apiInternalPaths (dict "routePrefix" "b2bapi" "path" "/B2BAPIs/svc" "access" "internal") -}}

@@ -444,7 +444,7 @@ asi:
         name: lw-adapter
         port: 10580
         targetPort: lw-adapter
-        nodePort: 10580
+        nodePort: 10080
         protocol: TCP    
     extraPorts: []
       #-name: http-1

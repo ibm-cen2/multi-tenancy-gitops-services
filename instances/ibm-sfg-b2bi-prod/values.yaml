@@ -450,7 +450,7 @@ asi:
     extraPorts: 
       - name: lwfw
         port: 10580
-        targetPort: lw-port
+        targetPort: 10580
         nodePort: 30009
         protocol: TCP
     loadBalancerIP:  

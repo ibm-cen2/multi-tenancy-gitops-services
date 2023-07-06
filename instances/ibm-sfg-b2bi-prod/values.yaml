@@ -451,7 +451,7 @@ asi:
         targetPort: http
         nodePort: 10580
         protocol: TCP
-        ports:
+        port:
         - containerPort: 10580
     loadBalancerIP:  
     annotations: {}  

@@ -447,12 +447,12 @@ asi:
         targetPort: lw-adapter
         nodePort: 30008
         protocol: TCP    
-    extraPorts: []
-      # - name: lwfw
-      #   port: 10580
-      #   targetPort: 10580
-      #   nodePort: 30009
-      #   protocol: TCP
+    extraPorts: 
+      - name: lwfw
+        port: 10580
+        targetPort: lw-port
+        nodePort: 30009
+        protocol: TCP
     loadBalancerIP:  
     annotations: {}  
   

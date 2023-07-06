@@ -442,16 +442,16 @@ asi:
         protocol: TCP            
       lwtHttpAdapter: 
         name: lw-adapter
-        port: 10580
+        port: 35008
         targetPort: lw-adapter
-        nodePort: 10080
+        nodePort: 30008
         protocol: TCP    
-    extraPorts: []
-      #-name: http-1
-      # port: 46000
-      # targetPort: http
-      # nodePort: 30100
-      # protocol: TCP
+    extraPorts: 
+      - name: lwfw
+        port: 10580
+        targetPort: http
+        nodePort: 10580
+        protocol: TCP
     loadBalancerIP:  
     annotations: {}  
   

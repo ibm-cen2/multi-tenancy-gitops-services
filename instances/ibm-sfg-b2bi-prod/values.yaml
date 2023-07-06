@@ -448,7 +448,8 @@ asi:
         protocol: TCP    
     extraPorts: 
       - name: lwfw
-        port: 10580
+        ports:
+        - containerPort: 10580
         targetPort: http
         nodePort: 10580
         protocol: TCP

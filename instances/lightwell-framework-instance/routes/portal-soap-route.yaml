@@ -9,5 +9,5 @@ spec:
     name: portal_soap
     weight: 100
   port:
-    targetPort: lwfw
+    targetPort: lw-adapter
   wildcardPolicy: None

@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: portal_soap
+  name: portal-soap
 spec:
   ports:
     - name: lwfw

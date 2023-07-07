@@ -1,6 +1,7 @@
 resources:
 - pvcs/lwfw-files-pvc.yaml
 - routes/lwfw-portal-soap-route.yaml
+- routes/portal-soap-route.yaml
 - routes/lwfw-route.yaml
 - secrets/lw-app-prop-secret.yaml
 - services/lwfw-portal-soap-service.yaml

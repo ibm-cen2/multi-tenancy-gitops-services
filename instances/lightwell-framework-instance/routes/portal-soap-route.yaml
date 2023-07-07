@@ -3,7 +3,7 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: portal-soap
 spec:
-  path: /portal_soap
+  path: /soap
   to:
     kind: Service
     name: portal_soap

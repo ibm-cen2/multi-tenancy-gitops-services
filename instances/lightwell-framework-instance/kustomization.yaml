@@ -6,8 +6,8 @@ resources:
 - services/lwfw-portal-soap-service.yaml
 - services/lwfw-service.yaml
 - statefulsets/lwfw-statefulset.yaml
-# - services/portal-soap-service.yaml
-# - routes/portal-soap-route.yaml
+- services/portal-soap-service.yaml
+- routes/portal-soap-route.yaml
 #- deployments/lw-deployment.yaml
 generatorOptions:
  disableNameSuffixHash: true

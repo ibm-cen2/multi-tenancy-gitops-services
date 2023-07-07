@@ -1,13 +1,12 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: portal-soap
+  name: lwfw-soap
 spec:
   ports:
-    - name: lwfw
-      protocol: TCP
+    - protocol: TCP
       port: 10580
       targetPort: 10580
   selector:
-    app.kubernetes.io/component: asi-server
+    app: lwfw
   type: ClusterIP

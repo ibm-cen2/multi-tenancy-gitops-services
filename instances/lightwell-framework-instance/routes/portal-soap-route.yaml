@@ -1,13 +1,12 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: portal-soap
+  name: lwfw-soap
 spec:
-  # path: /portal_soap
   to:
     kind: Service
-    name: portal_soap
+    name: lwfw-soap
     weight: 100
   port:
-    targetPort: lwfw
+    targetPort: 10580
   wildcardPolicy: None
